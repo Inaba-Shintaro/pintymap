@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +31,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('post.index');
     Route::resource('post', PostController::class, ['only' => ['create', 'store', 'show', 'edit', 'update', 'destroy']]);
+    Route::post('/post/{post_id}/comment', [CommentController::class, 'store'])->name('comment.store');
+    Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });

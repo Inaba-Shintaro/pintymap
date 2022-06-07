@@ -48,13 +48,16 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('新規登録') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login/guest">ゲストログイン</a>
                         </li>
                         @endif
                         @else
