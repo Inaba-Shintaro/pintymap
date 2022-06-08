@@ -176,6 +176,49 @@
             });
         }
     </script>
+    @elseif (Request::routeIs('post.edit'))
+    <script>
+        let map;
+
+        function initMap() {
+            //////////////////////////////
+            //【posts.edit.blade.php】////
+            //////////////////////////////
+            var editLat = parseFloat(document.getElementById('js-getLat').value);
+            var editLng = parseFloat(document.getElementById('js-getLng').value);
+
+            // インプットに代入
+            let inputLat = document.getElementById("sample_lat");
+            let inputLng = document.getElementById("sample_lng");
+            inputLat.value = editLat;
+            inputLng.value = editLng;
+
+            //マーカーの初期位置をDBから取得した値に設定
+            const edit_position = {
+                lat: editLat,
+                lng: editLng,
+            };
+
+            //ポスト詳細画面にgooglemapを表示
+            let map = new google.maps.Map(document.getElementById("edit_map"), {
+                center: edit_position,
+                zoom: 15,
+            });
+
+            //ポスト詳細画面のgooglemapにマーカーを表示
+            let marker = new google.maps.Marker({
+                draggable: true,
+                position: edit_position,
+                map: map,
+            });
+
+            //マーカーをドラッグ＆ドロップした座標を取得
+            marker.addListener("dragend", function(e) {
+                inputLat.value = e.latLng.lat();
+                inputLng.value = e.latLng.lng();
+            });
+        }
+    </script>
     @endif
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw6n16TVvvodS0JmNYna1Aq2sTBXl_cyI&callback=initMap&v=weekly" defer></script>
