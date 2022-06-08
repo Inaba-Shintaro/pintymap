@@ -3,6 +3,8 @@
 
 @include('layouts.pageHeader',['pageHeader' => 'ポスト詳細画面'])
 
+<div id="show_map"></div>
+
 <p>{{$post->title}}</p>
 <p>{{$post->description}}</p>
 

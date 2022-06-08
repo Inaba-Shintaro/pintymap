@@ -5473,34 +5473,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \******************************/
 /***/ (() => {
 
-var map;
 
-function initMap() {
-  var defaultLat = 35.71484559979886;
-  var defaultLng = 139.79670113988192;
-  var inputLat = document.getElementById("sample_lat");
-  var inputLng = document.getElementById("sample_lng");
-  inputLat.value = defaultLat;
-  inputLng.value = defaultLng;
-  var sennsouji = {
-    lat: defaultLat,
-    lng: defaultLng
-  };
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: sennsouji,
-    zoom: 15
-  }); // The marker, positioned at sennsouji
-
-  var marker = new google.maps.Marker({
-    draggable: true,
-    position: sennsouji,
-    map: map
-  });
-  marker.addListener("dragend", function (e) {
-    inputLat.value = e.latLng.lat();
-    inputLng.value = e.latLng.lng();
-  });
-}
 
 /***/ }),
 

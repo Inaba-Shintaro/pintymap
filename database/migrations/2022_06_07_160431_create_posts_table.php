@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->double('lat', 8, 5);
+            $table->double('lng', 8, 5);
             $table->timestamps();
             $table->foreignId('user_id')
                 ->constrained('users')

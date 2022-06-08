@@ -26,6 +26,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'description' => "nullable|max:255",
+            'lat' => 'required|max:255',
+            'lng' => 'required|max:255',
         ];
     }
 }
