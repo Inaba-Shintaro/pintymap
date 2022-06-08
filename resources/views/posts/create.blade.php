@@ -17,8 +17,6 @@
 
 <form action="{{ route('post.store')}}" method="post" enctype="multipart/form-data">
   @csrf
-  経度<input name="lat" id="sample_lat" type="text" value="" readonly>
-  緯度<input name="lng" id="sample_lng" type="text" value="" readonly>
   @include('posts.form',['btnTxt' => "投稿する"])
 </form>
 

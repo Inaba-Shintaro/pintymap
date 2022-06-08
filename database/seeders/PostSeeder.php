@@ -41,6 +41,8 @@ class PostSeeder extends Seeder
         //     'description' => 'これはタイトル4の説明文です',
         //     'lat' => 26.09511,
         //     'lng' => 127.72347,
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
         //     'user_id' => 2,
         // ]);
     }

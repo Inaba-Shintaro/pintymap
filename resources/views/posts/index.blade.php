@@ -9,7 +9,11 @@
   @foreach ($posts as $post)
   <div class="col-md-4 col-12 mb-4">
     <div class="card">
-      <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top" alt="...">
+    @isset ($post->image)
+    <img src="{{asset('storage/images/'.$post->image)}}" class="card-img-top" alt="...">
+    @else
+    <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top" alt="...">
+    @endisset
       <div class="card-body">
         <h5 class="card-title">{{$post->title}}</h5>
         <p class="card-text">{{$post->description}}</p>

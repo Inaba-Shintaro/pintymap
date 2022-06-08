@@ -40,8 +40,12 @@ class PostController extends Controller
     {
         $post = new Post;
         $post->user_id = Auth::id();
-        $post->fill($request->all())->save();
-
+        $post->fill($request->except('image'));
+        if ($request->image) {
+            $filename = $request->image->getClientOriginalName();
+            $post->image = $filename;
+        }
+        $post->save();
         return redirect()->route('post.index');
     }
 
@@ -76,7 +80,12 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->fill($request->all())->save();
+        $post->fill($request->except('image'));
+        if ($request->image) {
+            $filename = $request->image->getClientOriginalName();
+            $post->image = $filename;
+        }
+        $post->save();
         return redirect()->route('post.index');
     }
 
