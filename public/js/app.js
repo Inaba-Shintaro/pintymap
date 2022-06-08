@@ -5405,6 +5405,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./maps */ "./resources/js/maps.js");
+
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 /**
  * The following block of code may be used to automatically register your
@@ -5462,6 +5464,43 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/maps.js":
+/*!******************************!*\
+  !*** ./resources/js/maps.js ***!
+  \******************************/
+/***/ (() => {
+
+var map;
+
+function initMap() {
+  var defaultLat = 35.71484559979886;
+  var defaultLng = 139.79670113988192;
+  var inputLat = document.getElementById("sample_lat");
+  var inputLng = document.getElementById("sample_lng");
+  inputLat.value = defaultLat;
+  inputLng.value = defaultLng;
+  var sennsouji = {
+    lat: defaultLat,
+    lng: defaultLng
+  };
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: sennsouji,
+    zoom: 15
+  }); // The marker, positioned at sennsouji
+
+  var marker = new google.maps.Marker({
+    draggable: true,
+    position: sennsouji,
+    map: map
+  });
+  marker.addListener("dragend", function (e) {
+    inputLat.value = e.latLng.lat();
+    inputLng.value = e.latLng.lng();
+  });
+}
 
 /***/ }),
 

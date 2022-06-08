@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +26,7 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css" rel="stylesheet" />
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -92,9 +94,47 @@
         <main class="p-4">
             @yield('content')
         </main>
-        <!-- MDB -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>
     </div>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>
+    <script>
+        let map;
+
+        function initMap() {
+            let defaultLat = 35.71484559979886;
+            let defaultLng = 139.79670113988192;
+
+            let inputLat = document.getElementById("sample_lat");
+            let inputLng = document.getElementById("sample_lng");
+
+            inputLat.value = defaultLat;
+            inputLng.value = defaultLng;
+
+            const sennsouji = {
+                lat: defaultLat,
+                lng: defaultLng
+            };
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: sennsouji,
+                zoom: 15,
+            });
+
+            // The marker, positioned at sennsouji
+            const marker = new google.maps.Marker({
+                draggable: true,
+                position: sennsouji,
+                map: map,
+            });
+
+            marker.addListener("dragend", function(e) {
+                inputLat.value = e.latLng.lat();
+                inputLng.value = e.latLng.lng();
+            });
+        }
+    </script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw6n16TVvvodS0JmNYna1Aq2sTBXl_cyI&callback=initMap&v=weekly" defer></script>
 </body>
 
 </html>

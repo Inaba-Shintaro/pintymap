@@ -18,16 +18,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/login/guest', [LoginController::class, 'guestLogin']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('post.index');
