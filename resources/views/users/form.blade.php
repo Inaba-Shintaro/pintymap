@@ -4,6 +4,12 @@
   <input  name="name" class="form-control" type="text" placeholder="タイトル" value="{{$user->name ?? ''}}">
 </div>
 
+<!-- introduction input -->
+<div class="mb-4">
+  <label for="postintroductionTextarea" class="form-label">自己紹介</label>
+  <textarea name="introduction" class="form-control" id="postintroductionTextarea" rows="4">{{$user->introduction ?? ''}}</textarea>
+</div>
+
 <!-- Submit button -->
 <button type="submit" class="btn btn-success btn-rounded text-lowercase descriptionSm text-white mt-3" data-mdb-ripple-color="dark">
   {{$btnTxt}}

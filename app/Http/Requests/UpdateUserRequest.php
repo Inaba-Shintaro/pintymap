@@ -25,6 +25,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'introduction' => 'max:255',
         ];
     }
 }

@@ -4,6 +4,7 @@
 @include('layouts.pageHeader',['pageHeader' => 'マイページ'])
 
 <p>{{$user->name}}</p>
+<p>{{$user->introduction}}</p>
 
 @auth
 @if(Auth::id() === $user->id && Auth::id() !== 1)
