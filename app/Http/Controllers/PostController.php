@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class PostController extends Controller
 {
@@ -43,9 +44,8 @@ class PostController extends Controller
         $post->fill($request->except('image'));
 
         if ($request->image) {
-            //return $filename(DB保存用)
-            $filename = $this->saveImgToStorage($request->image);
-            $post->image = $filename;
+            $uploaded_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $post->image = $uploaded_url;
         }
 
         $post->save();
@@ -86,9 +86,8 @@ class PostController extends Controller
         $post->fill($request->except('image'));
 
         if ($request->image) {
-            //return $filename(DB保存用)
-            $filename = $this->saveImgToStorage($request->image);
-            $post->image = $filename;
+            $uploaded_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $post->image = $uploaded_url;
         }
 
         $post->save();
@@ -105,12 +104,5 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('post.index');
-    }
-
-    public function saveImgToStorage($request_image)
-    {
-        $file_name = $request_image->getClientOriginalName();
-        $request_image->storeAs('public/images/', $file_name);
-        return $file_name;
     }
 }

@@ -10,7 +10,7 @@
   <div class="col-md-4 col-12 mb-4">
     <div class="card">
     @isset ($post->image)
-    <img src="{{asset('storage/images/'.$post->image)}}" class="card-img-top" alt="...">
+    <img src="{{$post->image}}" class="card-img-top" alt="...">
     @else
     <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top" alt="...">
     @endisset
