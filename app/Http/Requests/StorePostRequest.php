@@ -28,6 +28,7 @@ class StorePostRequest extends FormRequest
             'description' => "nullable|max:255",
             'lat' => 'required|max:255',
             'lng' => 'required|max:255',
+            'image' => 'image|file',
         ];
     }
 }

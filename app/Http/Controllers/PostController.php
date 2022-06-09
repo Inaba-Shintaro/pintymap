@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::latest()->simplePaginate(2);
+        $posts =  Post::latest()->simplePaginate(6);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -41,10 +41,13 @@ class PostController extends Controller
         $post = new Post;
         $post->user_id = Auth::id();
         $post->fill($request->except('image'));
+
         if ($request->image) {
-            $filename = $request->image->getClientOriginalName();
+            //return $filename(DB保存用)
+            $filename = $this->saveImgToStorage($request->image);
             $post->image = $filename;
         }
+
         $post->save();
         return redirect()->route('post.index');
     }
@@ -81,10 +84,13 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $post->fill($request->except('image'));
+
         if ($request->image) {
-            $filename = $request->image->getClientOriginalName();
+            //return $filename(DB保存用)
+            $filename = $this->saveImgToStorage($request->image);
             $post->image = $filename;
         }
+
         $post->save();
         return redirect()->route('post.index');
     }
@@ -99,5 +105,12 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('post.index');
+    }
+
+    public function saveImgToStorage($request_image)
+    {
+        $file_name = $request_image->getClientOriginalName();
+        $request_image->storeAs('public/images/', $file_name);
+        return $file_name;
     }
 }
