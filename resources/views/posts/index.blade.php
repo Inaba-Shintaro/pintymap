@@ -10,9 +10,9 @@
   <div class="col-md-4 col-12 mb-4">
     <div class="card">
     @isset ($post->image)
-    <img src="{{$post->image}}" class="card-img-top" alt="...">
+    <img src="{{$post->image}}" class="card-img-top cardImage" alt="...">
     @else
-    <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top" alt="...">
+    <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top cardImage" alt="...">
     @endisset
       <div class="card-body">
         <h5 class="card-title">{{$post->title}}</h5>

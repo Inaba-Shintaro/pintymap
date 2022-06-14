@@ -1,6 +1,6 @@
 <!-- position input -->
-経度<input name="lat" id="sample_lat" type="text" value="" readonly>
-緯度<input name="lng" id="sample_lng" type="text" value="" readonly>
+<input name="lat" id="sample_lat" type="text" value="" readonly hidden>
+<input name="lng" id="sample_lng" type="text" value="" readonly hidden>
 
 <!-- title input -->
 <div class="mb-4">

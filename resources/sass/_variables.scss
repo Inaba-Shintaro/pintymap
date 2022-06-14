@@ -17,3 +17,8 @@ $line-height-base: 1.6;
 #edit_map {
   height: 300px;
 }
+
+.cardImage {
+  height: 180px;
+  object-fit: contain;
+}
