@@ -3,15 +3,17 @@
 @section('content')
 
 @auth
-@include('layouts.pageHeader',['pageHeader' => 'ポスト一覧画面'])
+@include('layouts.pageHeader',['pageHeader' => '投稿一覧画面'])
 
 <form method="GET" action="{{ route('post.index') }}">
-  <input name="search" value="@if (isset($search)) {{ $search }} @endif" class="form-control" type="text" placeholder="キーワードで検索" aria-label="default input example">
+  <input name="search" value="@if (isset($search)) {{ $search }} @endif" class="form-control mb-3" type="text" placeholder="キーワードで検索" aria-label="default input example">
   <div class="d-flex">
-    <button type="submit" class="btn btn-primary">検索</button>
+    <button type="submit" class="btn btn-primary me-3">検索</button>
     <a class="btn btn-primary" href="{{ route('post.index') }}" role="button">クリア</a>
   </div>
 </form>
+
+<hr>
 
 <div class="row">
   @foreach ($posts as $post)
@@ -28,7 +30,7 @@
       <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top cardImage" alt="...">
       @endisset
       <div class="card-body">
-        <a href="{{ route('mypage', ['user' => $user->id]) }}" class="btn btn-primary btn-rounded showBtn text-lowercase" role="button">詳細を見る</a>
+        <a href="{{ route('mypage', ['user' => $user->id]) }}" class="btn btn-primary btn-rounded showBtn text-lowercase" role="button">{{$user->name}}さんのマイページへ</a>
       </div>
     </div>
   </div>
