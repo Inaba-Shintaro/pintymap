@@ -5,7 +5,7 @@
 }
 
 #show_map {
-  height: 300px;
+  height: 450px;
 }
 
 #edit_map {
@@ -24,6 +24,15 @@
   border-radius: 5px;
 }
 
+@media screen and (max-width: 480px) {
+  /* 480pxまでの幅の場合に適応される */
+  .commentFz {
+    font-size: 14px !important;
+  }
+}
+@media screen and (max-width: 320px) {
+  /* 320pxまでの幅の場合に適応される */
+}
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

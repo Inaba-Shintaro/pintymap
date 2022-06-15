@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center mb-2">
+<div class="d-flex align-items-center">
   <a href="{{ route('mypage', ['user' => $record->id]) }}">
     @isset ($record->image)
     <img src="{{$record->image}}" class="userIconImage" alt="...">
