@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
 #map {
-  height: 300px;
+  height: 640px;
 }
 
 #show_map {
@@ -9,7 +9,7 @@
 }
 
 #edit_map {
-  height: 300px;
+  height: 640px;
 }
 
 .cardImage {

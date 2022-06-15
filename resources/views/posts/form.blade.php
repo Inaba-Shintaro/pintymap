@@ -5,13 +5,15 @@
 <!-- title input -->
 <div class="mb-4">
   <label for="inputPassword5" class="form-label">タイトル</label>
+  <small>(255文字以内)</small>
   <input name="title" class="form-control" type="text" placeholder="タイトル" value="{{$post->title ?? ''}}">
 </div>
 
 <!-- description input -->
 <div class="mb-4">
   <label for="postDescriptionTextarea" class="form-label">説明文</label>
-  <textarea name="description" class="form-control" id="postDescriptionTextarea" rows="4">{{$post->description ?? ''}}</textarea>
+  <small>(255文字以内)</small>
+  <textarea name="description" class="form-control" id="postDescriptionTextarea" rows="10">{{$post->description ?? ''}}</textarea>
 </div>
 
 <!-- image input -->

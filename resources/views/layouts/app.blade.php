@@ -138,6 +138,13 @@
                 map: map,
             });
 
+            infowindow = new google.maps.InfoWindow({
+                content: 'ドラッグ＆ドロップで好きな場所に動かせます。',
+                position: sennsouji,
+            });
+
+            infowindow.open(map);
+
             //マーカーをドラッグ＆ドロップした座標を取得
             marker.addListener("dragend", function(e) {
                 inputLat.value = e.latLng.lat();
@@ -211,6 +218,13 @@
                 position: edit_position,
                 map: map,
             });
+
+            infowindow = new google.maps.InfoWindow({
+                content: 'ドラッグ＆ドロップで好きな場所に動かせます。',
+                position: edit_position,
+            });
+
+            infowindow.open(map);
 
             //マーカーをドラッグ＆ドロップした座標を取得
             marker.addListener("dragend", function(e) {
