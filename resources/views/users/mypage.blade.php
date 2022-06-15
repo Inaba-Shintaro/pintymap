@@ -1,16 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-@include('layouts.pageHeader',['pageHeader' => 'マイページ'])
-
-<p>{{$user->name}}</p>
+<div class="d-md-flex mb-3 text-center text-md-start">
+  @isset ($user->image)
+  <img src="{{$user->image}}" class="cardImage mb-2 mb-md-0" alt="...">
+  @else
+  <img src="{{asset('storage/images/neko.jpeg')}}" class="cardImage mb-2 mb-md-0" alt="...">
+  @endisset
+  <p class="ms-md-3 fs-1">{{$user->name}}</p>
+</div>
+@include('layouts.pageHeader',['pageHeader' => '自己紹介'])
+<hr>
 <p>{{$user->introduction}}</p>
-
-@isset ($user->image)
-<img src="{{$user->image}}" class="card-img-top cardImage" alt="...">
-@else
-<img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top cardImage" alt="...">
-@endisset
 
 @auth
 @if(Auth::id() === $user->id && Auth::id() !== 1)
@@ -25,6 +26,5 @@
   @include('posts.loopItem',['post' => $post])
   @endforeach
 </div>
-
 
 @endsection
