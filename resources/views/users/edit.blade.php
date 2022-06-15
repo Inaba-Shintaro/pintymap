@@ -13,8 +13,8 @@
 @auth
 @if (Auth::id() === $user->id && Auth::id() !== 1)
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-danger btn-rounded text-lowercase mb-3 descriptionSm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-  <i class="fas fa-trash me-2"></i>アカウントを削除する
+<button type="button" class="btn btn-outline-danger btn-rounded text-lowercase mt-4 descriptionSm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+  <i class="fas fa-trash"></i>アカウントを削除する
 </button>
 
 <!-- Modal -->
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">閉じる</button>
+        <button type="button" class="btn btn-success" data-mdb-dismiss="modal">閉じる</button>
         <form action="{{ route('user.destroy', ['user' => Auth::id()]) }}" method="post">
           @method('DELETE')
           @csrf

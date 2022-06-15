@@ -9,9 +9,13 @@
   @endisset
   <p class="ms-md-3 fs-1">{{$user->name}}</p>
 </div>
-@include('layouts.pageHeader',['pageHeader' => '自己紹介'])
-<hr>
-<p>{{$user->introduction}}</p>
+@auth
+@if (Auth::id() === $user->id && Auth::id() !== 1)
+  @include('layouts.pageHeader',['pageHeader' => '自己紹介'])
+  <hr>
+  <p>{{$user->introduction}}</p>
+@endif
+@endauth
 
 @auth
 @if(Auth::id() === $user->id && Auth::id() !== 1)

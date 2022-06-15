@@ -1,13 +1,15 @@
 <!-- name input -->
 <div class="mb-4">
   <label for="inputPassword5" class="form-label">アカウント名</label>
+  <small>(255文字以内)</small>
   <input  name="name" class="form-control" type="text" placeholder="タイトル" value="{{$user->name ?? ''}}">
 </div>
 
 <!-- introduction input -->
 <div class="mb-4">
   <label for="postintroductionTextarea" class="form-label">自己紹介</label>
-  <textarea name="introduction" class="form-control" id="postintroductionTextarea" rows="4">{{$user->introduction ?? ''}}</textarea>
+  <small>(255文字以内)</small>
+  <textarea name="introduction" class="form-control" id="postintroductionTextarea" rows="10">{{$user->introduction ?? ''}}</textarea>
 </div>
 
 <!-- image input -->
