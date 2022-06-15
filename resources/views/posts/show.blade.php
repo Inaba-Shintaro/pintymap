@@ -24,12 +24,10 @@
 </form>
 @endauth
 
-
 @if($post->comments != null)
 @foreach ($post->comments as $comment)
 @include('comments.comment',['comment' => $comment])
 @endforeach
 @endif
-
 
 @endsection
