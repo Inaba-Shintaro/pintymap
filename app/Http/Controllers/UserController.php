@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class UserController extends Controller
 {
@@ -12,11 +13,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function mypage()
+    public function mypage(User $user)
     {
-        $user = Auth::user();
         return view('users.mypage', ['user' => $user]);
     }
 
@@ -40,7 +41,12 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->fill($request->all())->save();
+        $user->fill($request->except('image'));
+        if ($request->image) {
+            $uploaded_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $user->image = $uploaded_url;
+        }
+        $user->save();
         return view('users.mypage', ['user' => $user]);
     }
 

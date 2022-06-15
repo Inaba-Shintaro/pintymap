@@ -7,6 +7,7 @@
 
 <p>{{$post->title}}</p>
 <p>{{$post->description}}</p>
+@include('layouts.userIcon')
 
 @auth
 @if(Auth::id() == $post->user_id)

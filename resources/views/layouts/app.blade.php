@@ -73,7 +73,7 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('mypage') }}">
+                                <a class="dropdown-item" href="{{ route('mypage',['user' => Auth::id()]) }}">
                                     {{ __('マイページ') }}
                                 </a>
 

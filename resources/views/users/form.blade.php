@@ -10,6 +10,10 @@
   <textarea name="introduction" class="form-control" id="postintroductionTextarea" rows="4">{{$user->introduction ?? ''}}</textarea>
 </div>
 
+<!-- image input -->
+<label class="form-label" for="customFile">アイコン画像</label>
+<input name="image" type="file" class="form-control" id="customFile" />
+
 <!-- Submit button -->
 <button type="submit" class="btn btn-success btn-rounded text-lowercase descriptionSm text-white mt-3" data-mdb-ripple-color="dark">
   {{$btnTxt}}
