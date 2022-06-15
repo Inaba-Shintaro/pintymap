@@ -17,7 +17,7 @@
       <div class="card-body">
         <h5 class="card-title">{{$post->title}}</h5>
         <p class="card-text">{{$post->description}}</p>
-        @include('layouts.userIcon')
+        @include('layouts.userIcon', ['record' => $post->user])
         <a href="{{ route('post.show', ['post' => $post->id]) }}" class="btn btn-primary btn-rounded showBtn text-lowercase" role="button">詳細を見る</a>
       </div>
     </div>

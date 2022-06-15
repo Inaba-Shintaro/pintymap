@@ -1,4 +1,4 @@
-<p>{{$comment->user->name}}のコメント</p>
+@include('layouts.userIcon', ['record' => $comment->user])
 <p>{{$comment->comment}}</p>
 
 @auth
