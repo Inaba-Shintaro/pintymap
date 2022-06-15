@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -15,10 +17,43 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts =  Post::latest()->simplePaginate(6);
-        return view('posts.index', ['posts' => $posts]);
+        $posts = Post::latest()->paginate(6);
+        $search = $request->input('search');
+
+        if ($search) {
+            $spaceConversion = mb_convert_kana($search, 's');
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+            //postのタイトルと説明文で検索
+            $postQuery = Post::query();
+            foreach ($wordArraySearched as $value) {
+                $postQuery->where('title', 'like', '%' . $value . '%')
+                ->orWhere('description', 'like', '%' . $value . '%');
+            }
+            $posts = $postQuery->latest()->paginate(6);
+
+            //userの名前で検索
+            $userQuery = User::query();
+            foreach ($wordArraySearched as $value) {
+                $userQuery->where('name', 'like', '%' . $value . '%');
+            }
+            $users = $userQuery->latest()->paginate(6);
+
+            return view('posts.index')
+            ->with([
+                'posts' => $posts,
+                'users' => $users,
+                'search' => $search,
+            ]);
+        }
+
+        return view('posts.index')
+            ->with([
+                'posts' => $posts,
+                'search' => $search,
+            ]);
     }
 
     /**
