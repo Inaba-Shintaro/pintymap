@@ -50,7 +50,9 @@
             <!-- Register buttons -->
             @if (Route::has('register'))
             <div class="text-center">
-                <p>登録をしていない方は<a href="{{ route('register') }}">新規登録</a></p>
+                <p>
+                    登録をしていない方は<a href="{{ route('register') }}">新規登録</a><span>or</span><a href="/login/guest">ゲストログイン</a>
+                </p>
             </div>
             @endif
         </form>
