@@ -27,7 +27,7 @@
       @isset ($user->image)
       <img src="{{$user->image}}" class="card-img-top cardImage" alt="...">
       @else
-      <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top cardImage" alt="...">
+      <img src="{{asset('images/default.png')}}" class="card-img-top cardImage" alt="...">
       @endisset
       <div class="card-body">
         <a href="{{ route('mypage', ['user' => $user->id]) }}" class="btn btn-primary btn-rounded showBtn text-lowercase" role="button">{{$user->name}}さんのマイページへ</a>

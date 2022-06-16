@@ -5,7 +5,7 @@
   @isset ($user->image)
   <img src="{{$user->image}}" class="cardImage mb-2 mb-md-0" alt="...">
   @else
-  <img src="{{asset('storage/images/neko.jpeg')}}" class="cardImage mb-2 mb-md-0" alt="...">
+  <img src="{{asset('images/default.png')}}" class="cardImage mb-2 mb-md-0" alt="...">
   @endisset
   <p class="ms-md-3 fs-1">{{$user->name}}</p>
 </div>

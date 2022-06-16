@@ -3,7 +3,7 @@
     @isset ($post->image)
     <img src="{{$post->image}}" class="card-img-top cardImage" alt="...">
     @else
-    <img src="{{asset('storage/images/neko.jpeg')}}" class="card-img-top cardImage" alt="...">
+    <img src="{{asset('images/map.png')}}" class="card-img-top cardImage" alt="...">
     @endisset
     <div class="card-body">
       <h5 class="card-title">{{$post->title}}</h5>
